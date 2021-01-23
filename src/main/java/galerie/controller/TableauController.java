@@ -63,7 +63,7 @@ public class TableauController {
         String message;
         try {
             // cf. https://www.baeldung.com/spring-data-crud-repository-save
-//            dao.save(tableau);
+            dao.save(tableau);
             // Le code de la catégorie a été initialisé par la BD au moment de l'insertion
             message = "Le tableau '" + tableau.getTitre() + "' a été correctement enregistré";
         } catch (DataIntegrityViolationException e) {
@@ -79,7 +79,7 @@ public class TableauController {
     }
         
         /**
-	 * Appelé par le lien 'Supprimer' dans 'showCategories.html'
+	 * Appelé par le lien 'Supprimer' dans 'afficheTableaux.html'
 	 * @param tableau à partir du code de la catégorie transmis en paramètre, 
 	 * Spring fera une requête SQL SELECT pour chercher la catégorié dans la base
 	 * @return une redirection vers l'affichage de la liste des catégories
