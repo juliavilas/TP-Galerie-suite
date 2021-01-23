@@ -5,6 +5,7 @@
  */
 package galerie.controller;
 
+import galerie.dao.ArtisteRepository;
 import galerie.dao.TableauRepository;
 import galerie.entity.Tableau;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class TableauController {
     @Autowired
     private TableauRepository dao;
     
+    @Autowired
+    private ArtisteRepository dao1;
+    
     /**
      * Affiche toutes les catégories dans la base
      *
@@ -41,13 +45,14 @@ public class TableauController {
     }
     
     /**
-     * Montre le formulaire permettant d'ajouter une galerie
+     * Montre le formulaire permettant d'ajouter un tableau
      *
      * @param tableau initialisé par Spring, valeurs par défaut à afficher dans le formulaire
      * @return le nom de la vue à afficher ('formulaireTableau.html')
      */
     @GetMapping(path = "add")
-    public String montreLeFormulairePourAjout(@ModelAttribute("tableau") Tableau tableau) {
+    public String montreLeFormulairePourAjout(@ModelAttribute("tableau") Tableau tableau, Model model) {
+        model.addAttribute("artistes", dao1.findAll());
         return "formulaireTableau";
     }
     

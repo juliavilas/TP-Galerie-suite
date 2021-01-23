@@ -23,9 +23,10 @@
                 <input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
             </div>
             <div class="column">
-                <label for="auteur">Auteur:</label>
-                <select>
-                    <option th:field="{tableaux}" th:each="t: ${tableaux}"  th:text="${t.titre}">Wireframe</option>
+                <label for="auteur_id">Auteur</label>
+                <select  name="auteur" id="auteur">
+                    <option th:each="a: ${artistes}" th:value="${a.id}">[[${a.nom}]]</option>
+                    <option value="">Auteur inconnu</option>
                 </select>
             </div>
             <div class="column">
